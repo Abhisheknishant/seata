@@ -1,6 +1,5 @@
 language: java
 sudo: false # faster builds
-dist: xenial
 
 arch:
   - amd64
@@ -14,22 +13,6 @@ cache: false
 install: true
 
 before_script:
-  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
-    wget https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/arm64/docker-ce_18.06.0~ce~3-0~ubuntu_arm64.deb;
-    sudo apt-get purge -y docker.io;
-    sudo apt-get autoclean;
-    sudo dpkg -i docker-ce_18.06.0~ce~3-0~ubuntu_arm64.deb;
-    sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic main restricted universe multiverse";
-    sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main restricted universe multiverse";
-    sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-backports main restricted universe multiverse";
-    sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main restricted universe multiverse";
-    sudo apt-get update;
-    sudo apt-get install linux-headers-`uname -r`;
-    sudo apt-get install --reinstall linux-image-`uname -r`;
-    fi
-  - sudo service docker status
-  - sudo service docker stop
-  #- sudo service docker status
   - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ]; then
     export IMAGE_NAME="openjdk:8u212-jre-alpine";
     if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
