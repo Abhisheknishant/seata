@@ -137,7 +137,7 @@ public class MySQLInsertRecognizerTest extends AbstractRecognizerTest {
         Assertions.assertEquals(1, insertColumns.size());
 
         //test for exception
-        /*Assertions.assertThrows(SQLParsingException.class, () -> {
+        Assertions.assertThrows(SQLParsingException.class, () -> {
             String s = "insert into t(a) values (?)";
             List<SQLStatement> sqlStatements = SQLUtils.parseStatements(s, JdbcConstants.MYSQL);
             SQLInsertStatement sqlInsertStatement = (SQLInsertStatement)sqlStatements.get(0);
@@ -145,7 +145,7 @@ public class MySQLInsertRecognizerTest extends AbstractRecognizerTest {
 
             MySQLInsertRecognizer oracleInsertRecognizer = new MySQLInsertRecognizer(s, sqlInsertStatement);
             oracleInsertRecognizer.getInsertColumns();
-        });*/
+        });
     }
 
     @Test
@@ -159,7 +159,7 @@ public class MySQLInsertRecognizerTest extends AbstractRecognizerTest {
         Assertions.assertEquals(1, insertRows.size());
 
         //test for exception
-        /*Assertions.assertThrows(SQLParsingException.class, () -> {
+        Assertions.assertThrows(SQLParsingException.class, () -> {
             String s = "insert into t(a) values (?)";
             List<SQLStatement> sqlStatements = SQLUtils.parseStatements(s, JdbcConstants.MYSQL);
             SQLInsertStatement sqlInsertStatement = (SQLInsertStatement)sqlStatements.get(0);
@@ -167,7 +167,7 @@ public class MySQLInsertRecognizerTest extends AbstractRecognizerTest {
 
             MySQLInsertRecognizer mysqlInsertRecognizer = new MySQLInsertRecognizer(s, sqlInsertStatement);
             mysqlInsertRecognizer.getInsertRows(Collections.singletonList(pkIndex));
-        });*/
+        });
     }
 
     @Override
