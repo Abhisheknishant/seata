@@ -14,6 +14,7 @@ cache: false
 install: true
 
 before_script:
+  - sudo service mysql status
   - service docker status
   - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ]; then
     export IMAGE_NAME="openjdk:8u212-jre-alpine";
@@ -33,5 +34,6 @@ script:
     else
     travis_wait 30 ./mvnw clean install -DskipTests=false -Dcheckstyle.skip=false -Dlicense.skip=false -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn;
     fi
+  - sudo service mysql status
 after_success:
   - bash <(curl -s https://codecov.io/bash)
