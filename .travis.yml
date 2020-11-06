@@ -1,9 +1,12 @@
 language: java
 sudo: false # faster builds
+dist: focal
+virt: vm
+group: edge
 
 arch:
   - amd64
-  - arm64
+  - arm64-graviton2
 jdk:
   - openjdk11
   - openjdk8
